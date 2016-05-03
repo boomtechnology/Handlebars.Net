@@ -174,6 +174,9 @@ namespace HandlebarsDotNet.Compiler
         private object AccessMember(object instance, string memberName)
         {
             var enumerable = instance as IEnumerable<object>;
+			if (enumerable == null) {  // Array does not cast cleanly to IEnumerable<object> in all cases
+				enumerable = (instance as Array)!=null ? (instance as Array).Cast<object>() : null;
+			}
             if (enumerable != null)
             {
                 int index;
