@@ -18,7 +18,7 @@ namespace HandlebarsDotNet
             {
                 return true;
             }
-            if (value == null)
+            if (value == null || value == DBNull.Value)
             {
                 return true;
             }
